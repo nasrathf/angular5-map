@@ -1,5 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
+
 
 
 import { AppComponent } from './app.component';
@@ -7,6 +9,10 @@ import { HeadersComponent } from './headers/headers.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { MapcontentComponent } from './mapcontent/mapcontent.component';
 import { AgmCoreModule } from '@agm/core';
+
+import {AppService} from './appService';
+import {MessageService} from './message.service';
+
 
 
 
@@ -18,7 +24,7 @@ import { AgmCoreModule } from '@agm/core';
     MapcontentComponent
   ],
   imports: [
-    BrowserModule,
+    BrowserModule,HttpClientModule,
     AgmCoreModule.forRoot({
       // please get your own API key here:
       // https://developers.google.com/maps/documentation/javascript/get-api-key?hl=en
@@ -26,7 +32,7 @@ import { AgmCoreModule } from '@agm/core';
     })
 
   ],
-  providers: [],
+  providers: [AppService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

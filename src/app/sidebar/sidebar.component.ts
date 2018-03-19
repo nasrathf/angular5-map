@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {AppService} from '../appService';
+import {EventType} from '../eventType';
 
 @Component({
   selector: 'app-sidebar',
@@ -7,9 +9,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SidebarComponent implements OnInit {
 
-  constructor() { }
+events: Event [];
+
+  constructor( private appService : AppService ) { }
 
   ngOnInit() {
+    this.appService.getEvents().subscribe(data => {
+        this.events = data.EventList;
+        console.log(this.events);
+  });
   }
+
 
 }

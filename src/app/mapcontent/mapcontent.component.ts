@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {AppService} from '../appService';
+import {Restaurants} from '../restaurantsType';
 
 @Component({
   selector: 'app-mapcontent',
@@ -7,11 +9,25 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MapcontentComponent {
 // google maps zoom level
-zoom: number = 8;
+zoom: number = 12;
+
+restaurants: Restaurants [];
+lat : number;
+lng: number;
+
+constructor( private appService : AppService ) {
+  this.appService.getRestaurants().subscribe(data => {
+    this.restaurants = data.restaurants.restaurant;
+    this.lat = parseFloat(this.restaurants[0].latitude);
+    this.lng = parseFloat(this.restaurants[0].longitude);
+    });
+ }
+
+ngOnInit() {
+}
+
   
 // initial center position for the map
-lat: number = 51.673858;
-lng: number = 7.815982;
 
 clickedMarker(label: string, index: number) {
   console.log(`clicked the marker: ${label || index}`)
