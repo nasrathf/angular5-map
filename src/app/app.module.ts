@@ -12,6 +12,10 @@ import { AgmCoreModule } from '@agm/core';
 
 import {AppService} from './appService';
 import {MessageService} from './message.service';
+import {ToastModule} from 'ng2-toastr/ng2-toastr';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FormsModule } from '@angular/forms';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
 
 
 
@@ -24,7 +28,7 @@ import {MessageService} from './message.service';
     MapcontentComponent
   ],
   imports: [
-    BrowserModule,HttpClientModule,
+    BrowserModule,HttpClientModule,ToastModule.forRoot(),Ng2SearchPipeModule,FormsModule,
     AgmCoreModule.forRoot({
       // please get your own API key here:
       // https://developers.google.com/maps/documentation/javascript/get-api-key?hl=en

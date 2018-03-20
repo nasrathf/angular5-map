@@ -1,3 +1,8 @@
+.styleInput{
+    width: 100%
+}
+
+
 $topnav-background-color: #222;
 .sidebar {
     border-radius: 0;
@@ -79,7 +84,7 @@ $topnav-background-color: #222;
             background: darken($topnav-background-color, 5%);
         }
         .panel-collapse {
-            border-radious: 0;
+            border-radius: 0;
             border: none;
             .panel-body {
                 .list-group-item {

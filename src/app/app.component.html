@@ -1,4 +1,4 @@
 <!--The content below is only a placeholder and can be replaced.-->
 <app-headers></app-headers>
-<app-sidebar></app-sidebar>
-<app-mapcontent></app-mapcontent>
+<app-sidebar (messageEvent)="receiveMessage($event)"></app-sidebar>
+<app-mapcontent [eventDetails]="message"></app-mapcontent>

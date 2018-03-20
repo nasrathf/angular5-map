@@ -11,3 +11,7 @@ agm-map {
   a {
     color: darkblue;
   }
+
+  .modal-backdrop {
+    z-index: 0 !important;
+  }
