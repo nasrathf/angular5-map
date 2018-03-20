@@ -9,7 +9,7 @@ import {EventType} from '../eventType';
 })
 export class SidebarComponent implements OnInit {
 
-events: Event [];
+events: EventType [];
 
   constructor( private appService : AppService ) { }
 

@@ -5,5 +5,8 @@ export class Restaurants {
         "longitude": string;
         "telephone": number;
         "website": string;
-        "opening-hours": string
+        "opening-hours": string;
+        "lat": number;
+        "lng": number
+
 }

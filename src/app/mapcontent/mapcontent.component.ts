@@ -9,28 +9,40 @@ import {Restaurants} from '../restaurantsType';
 })
 export class MapcontentComponent {
 // google maps zoom level
-zoom: number = 12;
+zoom: number = 11;
 
 restaurants: Restaurants [];
 lat : number;
 lng: number;
+dataLabel: string;
 
 constructor( private appService : AppService ) {
   this.appService.getRestaurants().subscribe(data => {
     this.restaurants = data.restaurants.restaurant;
     this.lat = parseFloat(this.restaurants[0].latitude);
     this.lng = parseFloat(this.restaurants[0].longitude);
+    this.restaurants.forEach(function(element){
+      element.lat =  parseFloat(element.latitude);
+      element.lng =  parseFloat(element.longitude);
     });
+    console.log(this.restaurants);
+    });
+   
  }
 
 ngOnInit() {
+  /*this.restaurants.forEach(function(element){
+    element.lat =  parseFloat(element.latitude);
+    element.lng =  parseFloat(element.longitude);
+  });*/
+  console.log(this.restaurants);
 }
 
   
 // initial center position for the map
 
-clickedMarker(label: string, index: number) {
-  console.log(`clicked the marker: ${label || index}`)
+clickedMarker(label: string) {
+  this.dataLabel = label;
 }
 
 markers: marker[] = [
