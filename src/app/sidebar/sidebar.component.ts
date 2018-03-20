@@ -14,10 +14,7 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
 export class SidebarComponent implements OnInit {
 
 events: EventType [];
-@Output() messageEvent = new EventEmitter<string>();
-
-
-message: string;
+@Output() messageEvent = new EventEmitter<EventType>();
 
   constructor( private appService : AppService) {
     
@@ -31,7 +28,7 @@ message: string;
   }
 
   showEvent(e){
-    this.messageEvent.emit(e.Title);
+    this.messageEvent.emit(e);
   }
 
 

@@ -1,6 +1,9 @@
-import { Component, OnInit, Input  } from '@angular/core';
+import { Component, OnInit, Input,ViewContainerRef  } from '@angular/core';
 import {AppService} from '../appService';
 import {Restaurants} from '../restaurantsType';
+import { ToastsManager } from 'ng2-toastr/ng2-toastr';
+import {EventType} from '../eventType';
+
 
 @Component({
   selector: 'app-mapcontent',
@@ -10,8 +13,8 @@ import {Restaurants} from '../restaurantsType';
 export class MapcontentComponent {
 // google maps zoom level
 zoom: number = 11;
-
-@Input() eventDetails: string;
+renderHtml:string;
+@Input() eventDetails: EventType;
 
 ngOnChanges(changes) {
   this.childFunction(changes);
@@ -19,7 +22,7 @@ ngOnChanges(changes) {
 
 childFunction(changes){
   if(this.eventDetails !== undefined){
-  alert(this.eventDetails);
+  this.toastr.info('<h6 style="font-weight:700">'+ this.eventDetails.Title +' ,</h6> <span>'+this.eventDetails.Location+', '+this.eventDetails.Venue+'</span>'+'<br><span style="font-size:12px">'+this.eventDetails.EventDate+'</span>', null, {enableHTML: true});
   }
 }
 
@@ -28,7 +31,10 @@ lat : number;
 lng: number;
 dataLabel: string;
 
-constructor( private appService : AppService ) {
+
+
+constructor( private appService : AppService, public toastr: ToastsManager, vcr: ViewContainerRef ) {
+  this.toastr.setRootViewContainerRef(vcr);
   this.appService.getRestaurants().subscribe(data => {
     this.restaurants = data.restaurants.restaurant;
     this.lat = parseFloat(this.restaurants[0].latitude);

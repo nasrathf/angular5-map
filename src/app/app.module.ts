@@ -33,7 +33,7 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
       // please get your own API key here:
       // https://developers.google.com/maps/documentation/javascript/get-api-key?hl=en
       apiKey: 'AIzaSyC7m0g_555Jueat7ag91RNXZXPrsVxmPMc'
-    })
+    }),BrowserAnimationsModule
 
   ],
   providers: [AppService],
