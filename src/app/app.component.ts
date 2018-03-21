@@ -9,9 +9,8 @@ import {EventType} from './eventType';
 })
 export class AppComponent implements AfterViewInit {
   message:EventType;
-  ngAfterViewInit() {
-  }
-  title = 'app';
+  
+  ngAfterViewInit() {}
 
   receiveMessage($event) {
     this.message = $event;

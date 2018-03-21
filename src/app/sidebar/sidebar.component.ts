@@ -1,10 +1,7 @@
 import { Component, OnInit ,Output, EventEmitter } from '@angular/core';
-import {AppService} from '../appService';
+import {AppService} from '../../service/appService';
 import {EventType} from '../eventType';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
-
-
-
 
 @Component({
   selector: 'app-sidebar',
@@ -13,23 +10,21 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
 })
 export class SidebarComponent implements OnInit {
 
+//Holds the list of events
 events: EventType [];
 @Output() messageEvent = new EventEmitter<EventType>();
 
-  constructor( private appService : AppService) {
-    
-     }
+  constructor( private appService : AppService) { }
 
   ngOnInit() {
     this.appService.getEvents().subscribe(data => {
         this.events = data.EventList;
-        console.log(this.events);
   });
   }
 
   showEvent(e){
+    //Emits the clicked event details
     this.messageEvent.emit(e);
   }
-
 
 }
